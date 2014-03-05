@@ -1,28 +1,23 @@
 # webrtc.gems generated gem export file. Note that any env variable settings will be missing. Append these after using a ';' field separator
 
-bigdecimal -v1.2.5
 bigdecimal -v1.2.4
+bundler -v1.5.3
 chunky_png -v1.3.0
 colorize -v0.5.8
-compass -v0.12.2
+compass -v0.12.3
 ffi -v1.9.3
 fssm -v0.2.10
 io-console -v0.4.2
 json -v1.8.1
 listen -v1.1.6
-minitest -v5.3.0
 minitest -v4.7.5
-psych -v2.0.4
 psych -v2.0.3
-rake -v10.1.1
 rake -v10.1.0
 rb-fsevent -v0.9.4
 rb-inotify -v0.9.3
 rb-kqueue -v0.2.2
-rdoc -v4.1.1
 rdoc -v4.1.0
 sass -v3.3.0.rc.1
 sass -v3.2.14
 scss-lint -v0.17.2
-test-unit -v2.5.5
 test-unit -v2.1.1.0

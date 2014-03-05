@@ -25,6 +25,6 @@
     "grunt-contrib-compass": "^0.7.2",
     "grunt-express": "^1.2.1",
     "grunt-scss-lint": "0.0.9",
-    "grunt-coffeelint": "0.0.8",
+    "grunt-coffeelint": "0.0.8"
   }
 }

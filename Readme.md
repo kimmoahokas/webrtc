@@ -24,7 +24,8 @@ set up.
 8. Install ruby dependencies:
 
         rvm install ruby-2.1.1
-        rvm --create ruby-2.1.1@webrtc
+        rvm --create 2.1.1@webrtc
+        rvm use 2.1.1@webrtc
         rvm gemset import webrtc
 
 9. Start development server: `grunt run`
