@@ -1,83 +1,82 @@
 module.exports = (grunt) ->
-    grunt.initConfig
-        clean:
-            build:
-                src: ['build']
+  grunt.initConfig
+    clean:
+      build:
+        src: ['build']
 
-        coffee:
-            build:
-                expand: true
-                cwd: 'src'
-                src: ['**/*.coffee']
-                dest: 'build'
-                ext: '.js'
+    coffee:
+      build:
+        expand: true
+        cwd: 'src'
+        src: ['**/*.coffee']
+        dest: 'build'
+        ext: '.js'
 
-        compass:
-            dev:
-                options:
-                    sassDir: 'src/client/styles'
-                    cssDir: 'build/client/styles'
+    compass:
+      dev:
+        options:
+          sassDir: 'src/public/stylesheets'
+          cssDir: 'build/public/stylesheets'
 
-        copy:
-            build:
-                expand: true
-                cwd: 'src'
-                src: ['client/images/**']
-                dest: 'build'
+    copy:
+      build:
+        expand: true
+        cwd: 'src'
+        src: ['public/images/**', 'views/**/*.handlebars']
+        dest: 'build'
 
-        uglify:
-            build:
-                options:
-                    mangle: false
-                files:
-                    'build/client.js'; ['build/client/**/*.js']
-                    'build/server.js'; ['build/server/**/*.js']
+    coffeelint:
+      app:
+        files:
+          src: ['src/**/*.coffee']
 
-        cssmin:
-            build:
-                files:
-                    'build/client/styles/app.css': ['build/client/styles/**/*.css']
+    scsslint:
+      allFiles : ['src/public/stylesheets/**/*.scss']
 
-        # express:
-        #     server:
-        #         options:
-        #             port: 3000
-        #             bases: 'build/client'
+    express:
+      custom:
+        options:
+          port: 3000
+          hostname: '*'
+          server: 'build/app.js'
 
-        # watch:
-        #     stylesheets:
-        #         files: 'src/client/styles/**'
-        #         tasks: ['compass']
-        #     scripts:
-        #         files: 'src/**/*.coffee'
-        #         tasks: ['coffee']
-        #     copy:
-        #         files: 'src/client/images/**'
-        #         takss: ['copy']
+    watch:
+      stylesheets:
+        files: 'src/public/stylesheets/**'
+        tasks: ['compass', 'express']
+      scripts:
+        files: 'src/**/*.coffee'
+        tasks: ['coffee', 'express']
+      copy:
+        files: ['src/public/images/**', 'src/views/**/*.handlebars']
+        tasks: ['copy', 'express']
 
-        # tasks to add
-        # server
-        # watch
-        # coffeelint etc
-        # tests
+    # TODO:
+    # implement file change watching
+    # minify js + css and compile handlebars templates for production use
 
-    grunt.loadNpmTasks 'grunt-contrib-clean'
-    grunt.loadNpmTasks 'grunt-contrib-coffee'
-    grunt.loadNpmTasks 'grunt-contrib-compass'
-    grunt.loadNpmTasks 'grunt-contrib-copy'
-    grunt.loadNpmTasks 'grunt-contrib-uglify'
-    grunt.loadNpmTasks 'grunt-contrib-cssmin'
-    #grunt.loadNpmTasks 'grunt-contrib-watch'
-    #grunt.loadNpmTasks('grunt-express');
+  grunt.loadNpmTasks 'grunt-contrib-clean'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-compass'
+  grunt.loadNpmTasks 'grunt-contrib-copy'
+  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks('grunt-express')
+  grunt.loadNpmTasks 'grunt-coffeelint'
+  grunt.loadNpmTasks 'grunt-scss-lint'
 
-    grunt.registerTask(
-        'build',
-        'Build the project into runnable form.',
-        ['clean', 'coffee', 'compass', 'copy'])
+  grunt.registerTask(
+    'build',
+    'Build the project into runnable form.',
+    ['clean', 'coffee', 'compass', 'copy'])
 
-    grunt.registerTask(
-        'distribute'
-        'Make distribution ready build, ie. mimimize css and JS.',
-        ['build', 'cssmin', 'uglify'])
+  grunt.registerTask(
+    'lint',
+    'Run different linters fo the source code.'
+    ['coffeelint', 'scsslint'])
 
-    #grunt.registerTask 'default', ['build', 'express', 'express-keepalive']
+  grunt.registerTask(
+    'run',
+    'Build the app and run development server',
+    ['build', 'express', 'watch'])
+
+  grunt.registerTask 'default', ['run']

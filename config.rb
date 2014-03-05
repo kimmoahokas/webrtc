@@ -2,10 +2,10 @@
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "build/client/styles"
-sass_dir = "src/client/styles"
-images_dir = "build/client/images"
-javascripts_dir = "build/client/scripts"
+css_dir = "build/public/styles"
+sass_dir = "src/public/styles"
+images_dir = "build/public/images"
+javascripts_dir = "build/public/scripts"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
@@ -21,4 +21,4 @@ javascripts_dir = "build/client/scripts"
 # project again passing --syntax sass, or you can uncomment this:
 # preferred_syntax = :sass
 # and then run:
-# sass-convert -R --from scss --to sass src/client/styles scss && rm -rf sass && mv scss sass
+# sass-convert -R --from scss --to sass src/build/styles scss && rm -rf sass && mv scss sass
