@@ -4,12 +4,14 @@ express = require 'express'
 http = require 'http'
 path = require 'path'
 engines = require 'consolidate'
-
-# Require our own routes
-routes = require './routes'
+socketio = require 'socket.io'
 
 # Create the app
 app = express()
+# Add socket.io. Some tricks needed because of the grunt-express
+# See https://github.com/blai/grunt-express#server
+server = http.createServer app
+io = socketio.listen server
 
 # set up view engine
 app.set 'views', path.join __dirname, 'views'
@@ -23,8 +25,10 @@ app.engine '.handlebars', engines.handlebars
 app.use express.static path.join __dirname, 'public'
 app.use app.router
 
-# Register routes
-app.get '/', routes.index
+# register routes
+# see file routes/index.coffee
+routes = require './routes'
+routes app, io
 
 # catch 404 and forward to error handler
 # app.use (req, res, next) ->
@@ -45,5 +49,7 @@ app.get '/', routes.index
 #     message: err.message
 #     error: {}
 
-# Export the app
-module.exports = app
+# Export the server object
+exports = module.exports = server
+exports.use = ->
+  app.use.apply app

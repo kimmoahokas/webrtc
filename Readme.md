@@ -61,6 +61,15 @@ set up.
     - `views` Handlebars template files.
 * `build` The runnable application. Excluded from git. The folder structure under this tree is similar to the `src` dir tree.
 
+## Some hints ##
+
+The application is built using CoffeeScript, Compass styles and Express web framework.
+
+### Routing ###
+
+The application routes are defined in files at `src/routes` folder. Each file should correspond to a single resource e.g. main.coffee for all things related to the main view, auth.coffee related to the user authentication etc. The `index.coffee` file is special, as it is included to the main app and it includes the routes from all other files. This file may seem unnecessary, but it's purpose is to keep the `app.coffee` file as clean as possible.
+
+
 ## Credits ##
 
 1. Landon Schropp, Writing an Awesome Build Script with Grunt,
