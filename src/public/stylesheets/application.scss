@@ -1,5 +1,88 @@
-@import "base";
+@import 'base';
+@import 'bootstrap';
+
+$color1: #b2987c;
+$color2: #ffbf78;
+$color3: #ffb35f;
+$color4: #1f89b2;
+$color5: #5fd3ff;
 
 #wrapper {
-    font-color: $font-color;
+  color: $font-color;
+}
+
+header {
+  background-color: $color3;
+  margin: 0;
+
+  h1 {
+    font-size: 1.5em;
+    margin: .25em .5em;
+  }
+
+  #project-name {
+    border-right: 1px solid $color1;
+  }
+
+  .btn-default {
+    background-color: lighten($color3, 20);
+  }
+
+  .btn-default:hover {
+    background-color: #fff;
+  }
+}
+
+#editor-container {
+  padding-top: 1em;
+
+  .nav a {
+    padding-right: 30px;
+  }
+
+  .nav .glyphicon {
+    cursor: pointer;
+    position: absolute;
+    right: 9px;
+    top: 14px;
+  }
+
+  .ace-editor {
+    display: block;
+    min-height: 40em;
+    width: 100%;
+  }
+}
+
+aside {
+  border-right: 1px solid $color1;
+  min-height: 100%;
+  padding-top: 1em;
+
+  h1 {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+    margin-bottom: .5em;
+  }
+}
+
+.file-list {
+  line-height: 1.25;
+
+  .glyphicon {
+    margin-right: 3px;
+  }
+
+  .indent {
+    margin-left: 20px;
+  }
+
+  li:hover {
+    background-color: $color5;
+  }
+
+  li.indent:hover {
+    background-color: #fff;
+  }
 }

@@ -22,16 +22,19 @@ module.exports = (grunt) ->
       build:
         expand: true
         cwd: 'src'
-        src: ['public/images/**', 'views/**/*.handlebars']
+        src: ['public/images/**', 'public/js/**', 'public/fonts/**', 'views/**/*.handlebars']
         dest: 'build'
 
     coffeelint:
       app:
         files:
           src: ['src/**/*.coffee']
+      options:
+        max_line_length:
+          value: 120
 
     scsslint:
-      allFiles : ['src/public/stylesheets/**/*.scss']
+      allFiles : ['src/public/stylesheets/**/application.scss']
 
     express:
       custom:

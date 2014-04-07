@@ -1,11 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
     <head>
-        <title>Test</title>
-        <link rel="stylesheet" type="text/css" href="styles/application.css" />
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/application.css">
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <p>Tähän jotain: {{title}}</p>
+        <div class="container-fluid full-height">
+            <header class="row">
+                <div class="col-md-1 dropdown" id="menu-btn">
+                    <a class="btn btn-default" data-toggle="dropdown" href="#" data-target="#">
+                        <i class="glyphicon glyphicon-align-justify"></i> Menu
+                    </a>
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li>Blah</li>
+                        <li>Blah</li>
+                        <li>Blah</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-2" id="project-name">
+                    <h1>Sample project</h1>
+                </div>
+            </header>
+
+            <div class="row full-height main-container">
+                <aside class="col-md-2">
+                    <h1>Files in current project</h1>
+                    <ul id="navigator" class="file-list">
+                        <li class="folder">
+                            Sample project
+                        </li>
+                        <li class="indent">
+                            <ul class="file-list">
+                                <li class="folder">
+                                    app
+                                </li>
+                                <li class="indent">
+                                    <ul class="file-list">
+                                        <li class="src">config.cson</li>
+                                        <li class="src">urls.cson</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    templates
+                                </li>
+                                <li class="indent">
+                                    <ul class="file-list">
+                                        <li class="src">index.html</li>
+                                    </ul>
+                                </li>
+                                <li class="folder">
+                                    img
+                                </li>
+                                <li class="indent">
+                                    <ul class="file-list">
+                                        <li class="image">bg.png</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+
+                <section id="editor-container" class="col-md-10">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#builtin-welcome" data-toggle="tab">Welcome</a>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </li>
+                        <li>
+                            <a href="#file-1" data-toggle="tab">index.html</a>
+                            <span class="glyphicon glyphicon-remove"></span>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="builtin-welcome">
+                            <h1>Welcome to Epic Editor</h1>
+
+                            <p>
+                                Epic Editor is a project intended to showcase the use of WebRTC for collaboration when programming.
+                                This allows watching another person code, for eg. pair programming or learning purposes. Epic Editor
+                                integrates with GitHub and can be used as a simple installation-free code editor.
+                            </p>
+
+                            <h2>Mobile-focused</h2>
+
+                            <p>
+                                While editing code on a mobile device is most of the time not desirable, following a programmer
+                                on a mobile device provides many possibilities for collaborating while commuting or otherwise
+                                being on the move. Epic Editor is designed to be as usable on mobile as it is on a full-size
+                                desktop PC.
+                            </p>
+                        </div>
+
+                        <div class="tab tab-pane" id="file-1">
+                            <div class="ace-editor" id="file-1-editor">&lt;!doctype html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Example&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1&gt;Example&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/filelist.js"></script>
+        <script src="/js/tabs.js"></script>
+        <script src="/js/ace/ace.js"></script>
+        <script src="/js/editor.js"></script>
     </body>
 </html>
